@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+/* NikoshBAN & Nikosh (Standard Bangladesh Govt & Court Fonts) */
+@font-face {
+  font-family: 'NikoshBAN';
+  src: local('NikoshBAN'),
+       local('Nikosh BAN'),
+       local('Nikosh'),
+       url('https://cdn.jsdelivr.net/gh/hmoazzem/bangla-fonts@master/NikoshBAN.ttf') format('truetype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nikosh';
+  src: local('Nikosh'),
+       local('NikoshBAN'),
+       local('Nikosh BAN'),
+       url('https://cdn.jsdelivr.net/gh/hmoazzem/bangla-fonts@master/Nikosh.ttf') format('truetype');
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-slate-200);
+  }
+
+  body {
+    font-family: 'NikoshBAN', 'Nikosh', 'SolaimanLipi', 'Kalpurush', 'Noto Sans Bengali', sans-serif;
+  }
+}
+
+/* Clear rendering for Bengali numbers, circle badge, and court case numbers */
+.bengali-num, .case-number-badge {
+  font-family: 'NikoshBAN', 'Nikosh', 'SolaimanLipi', 'Noto Sans Bengali', sans-serif !important;
+  letter-spacing: 0.02em;
+  font-feature-settings: "kern" 1, "liga" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 10mm;
+  }
+
+  header, 
+  nav, 
+  button, 
+  input,
+  select,
+  .no-print,
+  .fixed.inset-0,
+  #printable-report-iframe {
+    display: none !important;
+  }
+  
+  body, html {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11px !important;
+    font-family: 'NikoshBAN', 'Nikosh', 'SolaimanLipi', sans-serif !important;
+  }
+
+  main {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .overflow-x-auto, .overflow-y-auto {
+    overflow: visible !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    page-break-inside: auto;
+  }
+
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  th, td {
+    border: 1px solid #475569 !important;
+    padding: 6px !important;
+    color: #000000 !important;
+  }
+
+  th {
+    background-color: #f1f5f9 !important;
+    font-weight: bold !important;
+    color: #000000 !important;
+  }
+}
+
+.print-only {
+  display: none;
+}
