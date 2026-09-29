@@ -195,6 +195,7 @@ function showAddCaseDialog() {
           <div class="col form-group">
             <label>কোন আদালতে মামলাধীন</label>
             <select id="court">
+              <option value="কাস্টমস, এক্সাইজ ও মূসক আপিলাত ট্রাইব্যুনাল">কাস্টমস, এক্সাইজ ও মূসক আপিলাত ট্রাইব্যুনাল</option>
               <option value="হাইকোর্ট">হাইকোর্ট</option>
               <option value="সুপ্রিম কোর্ট (আপীল বিভাগ)">সুপ্রিম কোর্ট (আপীল বিভাগ)</option>
               <option value="আপীল ট্রাইব্যুনাল">আপীল ট্রাইব্যুনাল</option>

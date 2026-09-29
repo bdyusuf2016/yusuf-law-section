@@ -33,6 +33,14 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({
 
   const highCourtCases = cases.filter(c => c.court.includes('হাইকোর্ট')).length;
   const supremeCourtCases = cases.filter(c => c.court.includes('সুপ্রিম কোর্ট') || c.court.includes('আপীল বিভাগ')).length;
+  const tribunalCases = cases.filter(c => c.court.includes('ট্রাইব্যুনাল')).length;
+  const certificateCases = cases.filter(c => 
+    c.court.includes('সার্টিফিকেট') || 
+    c.court.includes('২০২') || 
+    c.caseType.includes('সার্টিফিকেট') || 
+    c.caseType.includes('২০২') || 
+    Boolean(c.section202Status)
+  ).length;
   
   const stayOrderCases = cases.filter(c => 
     c.latestStatus.includes('স্থগিতাদেশ') || 
@@ -121,7 +129,29 @@ export const StatsDashboard: React.FC<StatsDashboardProps> = ({
             <Scale className="w-5 h-5" />
           </div>
         </div>
-        <div className="space-y-2">
+        <div className="space-y-1.5">
+          <button
+            onClick={() => onQuickFilter('court', activeFilterCourt.includes('ট্রাইব্যুনাল') ? 'all' : 'কাস্টমস, এক্সাইজ ও মূসক আপিলাত ট্রাইব্যুনাল')}
+            className={`w-full flex items-center justify-between p-2 rounded-xl text-xs transition-colors ${
+              activeFilterCourt.includes('ট্রাইব্যুনাল') 
+                ? 'bg-teal-600 text-white font-semibold shadow-sm' 
+                : 'bg-teal-50/70 dark:bg-teal-950/30 hover:bg-teal-100 dark:hover:bg-teal-900/40 text-teal-800 dark:text-teal-300 border border-teal-200/60 dark:border-teal-800/40'
+            }`}
+          >
+            <span className="truncate pr-1">🏢 আপিলাত ট্রাইব্যুনাল</span>
+            <span className="font-bold shrink-0">{toBengaliNumber(tribunalCases)} টি</span>
+          </button>
+          <button
+            onClick={() => onQuickFilter('court', activeFilterCourt.includes('সার্টিফিকেট') || activeFilterCourt.includes('২০২') ? 'all' : 'সার্টিফিকেট ও ধারা ২০২')}
+            className={`w-full flex items-center justify-between p-2 rounded-xl text-xs transition-colors ${
+              activeFilterCourt.includes('সার্টিফিকেট') || activeFilterCourt.includes('২০২')
+                ? 'bg-amber-600 text-white font-semibold shadow-sm' 
+                : 'bg-amber-50/70 dark:bg-amber-950/30 hover:bg-amber-100 dark:hover:bg-amber-900/40 text-amber-800 dark:text-amber-300 border border-amber-200/60 dark:border-amber-800/40'
+            }`}
+          >
+            <span className="truncate pr-1">📜 সার্টিফিকেট ও ধারা ২০২</span>
+            <span className="font-bold shrink-0">{toBengaliNumber(certificateCases)} টি</span>
+          </button>
           <button
             onClick={() => onQuickFilter('court', activeFilterCourt === 'হাইকোর্ট' ? 'all' : 'হাইকোর্ট')}
             className={`w-full flex items-center justify-between p-2 rounded-xl text-xs transition-colors ${

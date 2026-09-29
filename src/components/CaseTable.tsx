@@ -305,12 +305,31 @@ export const CaseTable: React.FC<CaseTableProps> = ({
 
                     <td className="py-3 px-3 whitespace-nowrap">
                       <span className={`inline-block px-2 py-0.5 rounded-full text-[11px] font-medium ${
-                        c.court.includes('সুপ্রিম কোর্ট') 
+                        c.court.includes('সার্টিফিকেট') || c.caseType?.includes('সার্টিফিকেট') || c.court.includes('২০২') || c.caseType?.includes('২০২') || c.section202Status
+                          ? 'bg-amber-100 text-amber-900 dark:bg-amber-950/60 dark:text-amber-300 border border-amber-300 dark:border-amber-800 font-semibold'
+                          : c.court.includes('ট্রাইব্যুনাল')
+                          ? 'bg-teal-100 text-teal-800 dark:bg-teal-950/60 dark:text-teal-300 border border-teal-200 dark:border-teal-800 font-semibold'
+                          : c.court.includes('সুপ্রিম কোর্ট') 
                           ? 'bg-purple-100 text-purple-800 dark:bg-purple-950/60 dark:text-purple-300 border border-purple-200 dark:border-purple-800' 
                           : 'bg-blue-100 text-blue-800 dark:bg-blue-950/60 dark:text-blue-300 border border-blue-200 dark:border-blue-800'
                       }`}>
                         {c.court}
                       </span>
+                      {c.tribunalBench && (
+                        <div className="text-[10px] text-teal-700 dark:text-teal-400 font-semibold mt-0.5">
+                          {c.tribunalBench}
+                        </div>
+                      )}
+                      {c.section202Status && (
+                        <div className="text-[10px] text-amber-800 dark:text-amber-300 font-semibold mt-0.5 max-w-[170px] truncate" title={c.section202Status}>
+                          ২০২: {c.section202Status}
+                        </div>
+                      )}
+                      {c.section7NoticeStatus && (
+                        <div className="text-[10px] text-amber-700 dark:text-amber-400 font-medium mt-0.5 max-w-[170px] truncate" title={c.section7NoticeStatus}>
+                          ৭ ধারা: {c.section7NoticeStatus}
+                        </div>
+                      )}
                     </td>
 
                     {/* বকেয়ার পরিমাণ (কোটি টাকা) - Highlighted requirement */}

@@ -27,9 +27,18 @@ export interface CaseRecord {
   recoveredAmountTaka?: number; // সরকারের অনুকূলে আদায়কৃত রাজস্ব (টাকা)
   disposalSummary?: string; // নিষ্পত্তির আদেশ/রায়ের সংক্ষিপ্ত বিবরণ
   updatedAt?: string;
+  tribunalBench?: string; // ট্রাইব্যুনাল বেঞ্চ (যেমন: ১ম বেঞ্চ, ২য় বেঞ্চ, ৩য় বেঞ্চ)
+  originalOrderNo?: string; // মূল দাবীনামা / আপীল কমিশনারেট আদেশ নং ও তারিখ
+  preDepositStatus?: string; // ১০% প্রাক-জমা স্থিতি
+  certificateCourtName?: string; // সার্টিফিকেট আদালত/দপ্তর (যেমন: জেনারেল সার্টিফিকেট আদালত, ঢাকা)
+  section7NoticeStatus?: string; // ৭ ধারা নোটিশ স্থিতি (যেমন: ৭ ধারা নোটিশ জারি সম্পন্ন)
+  distressWarrantStatus?: string; // ক্রোক পরোয়ানা / ওয়ারেন্ট স্থিতি (যেমন: ব্যাংক হিসাব ও সম্পত্তি ক্রোকাদেশ)
+  certificateDebtor?: string; // সার্টিফিকেট খাতক / দেনাদারের নাম
+  section202Status?: string; // কাস্টমস আইনের ধারা ২০২ অনুযায়ী পদক্ষেপ (যেমন: ২০২ নোটিশ / ব্যাংক ফ্রিজ / পোর্টে খালাস লক / পিডিআর প্রেরণ)
+  section202Ref?: string; // ধারা ২০২ নথি নং ও তারিখ
 }
 
-export type CourtFilter = 'all' | 'হাইকোর্ট' | 'সুপ্রিম কোর্ট' | 'আপীল ট্রাইব্যুনাল' | 'অন্যান্য';
+export type CourtFilter = 'all' | 'হাইকোর্ট' | 'সুপ্রিম কোর্ট' | 'কাস্টমস, এক্সাইজ ও মূসক আপিলাত ট্রাইব্যুনাল' | 'আপীল ট্রাইব্যুনাল' | 'সার্টিফিকেট ও ধারা ২০২' | 'সার্টিফিকেট আদালত' | 'অন্যান্য';
 
 export interface FilterState {
   searchQuery: string;

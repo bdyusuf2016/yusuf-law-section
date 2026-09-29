@@ -36,7 +36,9 @@ export const ChartGallery: React.FC<ChartGalleryProps> = ({ cases, onSelectCompa
     if (c.court.includes('সুপ্রিম কোর্ট') || c.court.includes('আপীল বিভাগ')) {
       courtKey = 'সুপ্রিম কোর্ট (আপীল বিভাগ)';
     } else if (c.court.includes('ট্রাইব্যুনাল')) {
-      courtKey = 'কাস্টমস আপীল ট্রাইব্যুনাল';
+      courtKey = 'কাস্টমস, এক্সাইজ ও মূসক আপিলাত ট্রাইব্যুনাল';
+    } else if (c.court.includes('সার্টিফিকেট') || c.caseType?.includes('সার্টিফিকেট')) {
+      courtKey = 'সার্টিফিকেট আদালত';
     }
     if (!courtCounts[courtKey]) {
       courtCounts[courtKey] = { count: 0, totalCrore: 0 };

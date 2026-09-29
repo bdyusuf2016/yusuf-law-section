@@ -77,6 +77,9 @@ export function formatCrore(crore: number, showSymbol: boolean = true): string {
   return showSymbol ? `${bn} কোটি টাকা` : `${bn} কোটি`;
 }
 
+export const formatCurrencyCrore = formatCrore;
+export const formatBanglaNumber = toBengaliNumber;
+
 /**
  * Categorizes latest status string into standardized category
  */
